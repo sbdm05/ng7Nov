@@ -10,7 +10,7 @@ const routes: Routes = [
   // créer une route pour orders/add
   { path: 'orders/add', component: PageAddOrderComponent },
   // créer route pour orders/edit
-  { path: 'orders/edit', component: PageEditOrderComponent },
+  { path: 'orders/edit/:id', component: PageEditOrderComponent },
   { path: 'test', component: TestComponent },
 ];
 

@@ -1,1 +1,35 @@
-<p>page-list-orders works!</p>
+<ng-template #loading> Loading ....</ng-template>
+
+<table class="table" *ngIf="collection$ | async as collection; else loading">
+  <thead>
+    <tr>
+      <!-- itérer dans headers avec *ngFor -->
+      <th *ngFor="let item of headers" scope="col">{{item}}</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <!-- {{collection | json}} -->
+    <!-- itérer dans le tableau collection -->
+    <tr *ngFor='let item of collection'>
+      <td><button (click)='goToEdit(item.id)' class='btn btn-primary'>Edit</button></td>
+      <td>{{item.typePresta | uppercase}}</td>
+      <td>{{item.client}}</td>
+      <td>{{item.nbJours}}</td>
+      <td>{{item.tjmHt | currency}}</td>
+      <td>{{ item.tjmHt | total : item.nbJours | currency}}</td>
+      <td>{{ item.tjmHt | total : item.nbJours : item.tva| currency}}</td>
+      <td>{{item.state}}</td>
+    </tr>
+
+  </tbody>
+
+  <!-- bouton pour ajouter une commander -->
+  <app-btn
+  route='/orders/add'
+  label='Ajouter'
+  styleBtn='btn btn-danger'
+  ></app-btn>
+</table>
+
+

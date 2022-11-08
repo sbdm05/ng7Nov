@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { PageListClientsComponent } from './clients/pages/page-list-clients/page-list-clients.component';
 import { PageListOrdersComponent } from './orders/pages/page-list-orders/page-list-orders.component';
 import { PageNotFoundComponent } from './page-not-found/pages/page-not-found/page-not-found.component';
 
@@ -10,6 +11,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'orders', pathMatch: 'full' },
   // quand on arrive sur orders, on affiche le composant
   // gestion de la route introuvable **
+  {
+    path: 'clients',
+    loadChildren: () =>
+      import('./clients/clients.module').then(
+        (m) => m.ClientsModule
+      ),
+  },
   {
     path: '**',
     loadChildren: () =>
