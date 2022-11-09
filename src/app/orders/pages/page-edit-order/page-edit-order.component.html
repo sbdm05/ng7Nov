@@ -1,1 +1,10 @@
-<p>page-edit-order works!</p>
+<!-- afficher app-form-order -->
+<!-- ajouter événement onEdit déclenché par submitted -->
+
+<div class="container" *ngIf="item$ | async as item">
+  <app-form-order [init]='item' (submitted)='onEdit($event)'></app-form-order>
+</div>
+
+<!-- Dans le TS : extraire l'id de la route -->
+<!-- faire appel vers bdd pour retrouver l'objet concerné -->
+

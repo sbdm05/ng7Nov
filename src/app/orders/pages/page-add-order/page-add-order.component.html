@@ -1,7 +1,7 @@
 <div class="container">
   <!-- ici on affiche le form -->
   <!-- on passe le nouvel objet à init -->
-  <app-form-order [init]='item'></app-form-order>
+  <app-form-order [init]='item' (submitted)='onAdd($event)'></app-form-order>
 </div>
 
 <!-- on vérifie dans app-form-order que init est bien un objet de type Order -->

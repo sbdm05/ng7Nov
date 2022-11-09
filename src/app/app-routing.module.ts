@@ -10,14 +10,14 @@ const routes: Routes = [
   // quand utilisateur arrive sur '', on est redirigé vers orders
   { path: '', redirectTo: 'orders', pathMatch: 'full' },
   // quand on arrive sur orders, on affiche le composant
-  // gestion de la route introuvable **
   {
     path: 'clients',
     loadChildren: () =>
-      import('./clients/clients.module').then(
-        (m) => m.ClientsModule
+    import('./clients/clients.module').then(
+      (m) => m.ClientsModule
       ),
-  },
+    },
+    // gestion de la route introuvable **
   {
     path: '**',
     loadChildren: () =>

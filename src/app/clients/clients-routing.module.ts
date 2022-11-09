@@ -5,6 +5,7 @@ import { PageEditClientComponent } from './pages/page-edit-client/page-edit-clie
 import { PageListClientsComponent } from './pages/page-list-clients/page-list-clients.component';
 
 const routes: Routes = [
+  // si l'utilisateur est sur /clients
   { path: '', component: PageListClientsComponent },
   { path: 'add', component: PageAddClientComponent },
   { path: 'edit/:id', component: PageEditClientComponent },

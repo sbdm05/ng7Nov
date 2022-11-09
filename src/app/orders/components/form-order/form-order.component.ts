@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -10,6 +10,7 @@ import { Order } from 'src/app/core/models/order';
 })
 export class FormOrderComponent implements OnInit {
   @Input() init!: Order;
+  @Output() submitted = new EventEmitter<Order>();
 
   public form!: FormGroup;
 
@@ -38,5 +39,6 @@ export class FormOrderComponent implements OnInit {
   // déclenchée quand on valide le formulaire
   onSubmit(){
     console.log(this.form.value); // afiche l'objet complet
+    this.submitted.emit(this.form.value);
   }
 }

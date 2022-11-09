@@ -1,1 +1,31 @@
-<p>page-list-clients works!</p>
+<ng-template #loading> Loading ....</ng-template>
+<table class="table" *ngIf="collection$ | async as collection; else loading">
+  <thead>
+    <tr>
+      <!-- itérer dans headers avec *ngFor -->
+      <th *ngFor="let item of headers" scope="col">{{item}}</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor='let item of collection'>
+      <td>
+        <button (click)='goToEdit(item)' class='btn btn-primary'>Edit</button>
+      </td>
+      <td>
+        {{item.state}}
+      </td>
+      <td>{{item.tva}}</td>
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{ item.totalCaHt | currency }}</td>
+      <td>{{item.totalCaHt | totalClient : item.tva | currency}}</td>
+
+      <td>{{ item.comment }}</td>
+  </tr>
+  </tbody>
+  <app-btn route='add' label='Ajouter' styleBtn="btn btn-danger"></app-btn>
+</table>
+
+
+
